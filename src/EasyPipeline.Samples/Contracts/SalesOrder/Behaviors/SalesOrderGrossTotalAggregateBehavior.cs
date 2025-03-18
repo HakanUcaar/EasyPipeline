@@ -10,7 +10,7 @@ public class SalesOrderGrossTotalAggregateBehavior<TContract>(ILogger<SalesOrder
     {
 
         context.GrossTotal = context.Items.Sum(x => (decimal)x.Quantity * x.UnitPrice);
-        logger.LogInformation($"[AGGREGATE] GrossTotal");
+        logger.LogInformation($"[SUM] GrossTotal");
 
         await next(context);
     }
