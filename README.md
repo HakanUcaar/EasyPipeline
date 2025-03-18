@@ -41,10 +41,8 @@ await pipelineExecuter.Run(customer, CancellationToken.None);
 ```
 
 Output :
-```
-![image](https://github.com/user-attachments/assets/20526517-7117-4166-8ffc-f4a716e584d1)
 
-```
+![image](https://github.com/user-attachments/assets/20526517-7117-4166-8ffc-f4a716e584d1)
 
 ## Örnek 2
 
@@ -76,10 +74,8 @@ await pipelineExecuter.Run(customer, CancellationToken.None);
 ```
 
 Output :
-```
-![image](https://github.com/user-attachments/assets/d5f212e7-88af-480b-8a85-253993f63ba0)
 
-```
+![image](https://github.com/user-attachments/assets/d5f212e7-88af-480b-8a85-253993f63ba0)
 
 
 
