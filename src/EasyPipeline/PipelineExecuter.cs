@@ -5,11 +5,17 @@ namespace EasyPipeline
 {
     public class PipelineExecuter<TContext>(IServiceProvider serviceProvider) where TContext : class
     {
-        public async Task Run(TContext context, CancellationToken cancellationToken) 
+        public async Task Run(TContext context, CancellationToken cancellationToken = default)
         {
-            var finalProcess = new EasyPipelineDelegate<TContext>(async (context, cancellationToken) =>
+            await Run(context, (context) => { }, cancellationToken);
+        }
+
+        public async Task<TContext> Run(TContext context, Action<TContext> action, CancellationToken cancellationToken)
+        {
+            var finalProcess = new EasyPipelineDelegate<TContext>((context, cancellationToken) =>
             {
-                await Task.FromResult(true);
+                action(context);
+                return Task.CompletedTask;
             });
 
             var pipeline = serviceProvider
@@ -27,11 +33,51 @@ namespace EasyPipeline
                         {
                             // TODO : Add ExceptionHandler
                             // TODO : Add ILogger 
-                            Console.WriteLine("Error in pipeline:{0}", ex.Message);                           
+                            Console.WriteLine("Error in pipeline:{0}", ex.Message);
                         }
                     });
 
             await pipeline(context, cancellationToken);
+
+            return context;
+        }
+    }
+
+    public class PipelineExecuter<TIn, TOut>(IServiceProvider serviceProvider) where TIn : class where TOut : class
+    {
+        public async Task<TOut> Run(TIn context, CancellationToken cancellationToken = default)
+        {
+            return await Run(context, (context) => { return null; }, cancellationToken);
+        }
+
+        public async Task<TOut> Run(TIn context, Func<TIn, TOut> action, CancellationToken cancellationToken = default)
+        {
+            var finalProcess = new EasyPipelineDelegate<TIn, TOut>((context, cancellationToken) =>
+            {
+                return Task.FromResult(action(context));
+            });
+
+            var pipeline = serviceProvider
+                .GetServices<IEasyPipeline<TIn,TOut>>()
+                .Reverse()
+                .Aggregate(
+                    finalProcess,
+                    (next, pipeline) => async (context, cancellationToken) =>
+                    {
+                        try
+                        {
+                            return await pipeline.InvokeAsync(context, next, cancellationToken);
+                        }
+                        catch (Exception ex)
+                        {
+                            // TODO : Add ExceptionHandler
+                            // TODO : Add ILogger 
+                            Console.WriteLine("Error in pipeline:{0}", ex.Message);
+                            return default(TOut);
+                        }
+                    });
+
+            return await pipeline(context, cancellationToken);
         }
     }
 }
