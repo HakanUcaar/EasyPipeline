@@ -3,9 +3,9 @@ using Microsoft.Extensions.Logging;
 
 namespace EasyPipeline.Validate;
 
-public class CustomerValidationBehavior<TContract>(ILogger<CustomerValidationBehavior<TContract>> logger) : IEasyPipeline<TContract> where TContract : Customer
+public class CustomerValidationBehavior<TContract>(ILogger<CustomerValidationBehavior<Customer>> logger) : IEasyPipeline<Customer>
 {
-    public async Task InvokeAsync(TContract context, EasyPipelineDelegate<TContract> next, CancellationToken cancellationToken)
+    public async Task InvokeAsync(Customer context, EasyPipelineDelegate<Customer> next, CancellationToken cancellationToken)
     {
         if(context == null || string.IsNullOrEmpty(context.Tel))
         {
