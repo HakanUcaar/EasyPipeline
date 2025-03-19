@@ -1,8 +1,7 @@
 ﻿using EasyPipeline.Abstractions;
-using EasyPipeline.Samples.Contracts;
 using Microsoft.Extensions.Logging;
 
-namespace EasyPipeline.Samples.Behaviors;
+namespace EasyPipeline.Aggregate;
 
 public class SalesOrderGrossTotalAggregateBehavior<TContract>(ILogger<SalesOrderGrossTotalAggregateBehavior<TContract>> logger) : IEasyPipeline<TContract> where TContract : SalesOrder
 {

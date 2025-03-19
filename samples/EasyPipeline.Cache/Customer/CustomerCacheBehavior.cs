@@ -1,12 +1,9 @@
 ﻿using EasyPipeline.Abstractions;
-using EasyPipeline.Samples.Repositories;
-using EasyPipeline.Samples.UseCases;
 using Microsoft.Extensions.Logging;
-namespace EasyPipeline.Samples.Contracts.Behaviors;
+namespace EasyPipeline.Cache;
 
 public class CustomerCacheBehavior<TIn,TOut>(ILogger<CustomerCacheBehavior<GetCustomerByIdQuery, Customer>> logger) : IEasyPipeline<GetCustomerByIdQuery, Customer>
-{
-    
+{   
 
     public async Task<Customer> InvokeAsync(GetCustomerByIdQuery context, EasyPipelineDelegate<GetCustomerByIdQuery, Customer> next, CancellationToken cancellationToken)
     {

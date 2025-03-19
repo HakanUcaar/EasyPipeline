@@ -1,6 +1,5 @@
-﻿using EasyPipeline.Samples.Contracts;
-
-namespace EasyPipeline.Samples.Repositories;
+﻿
+namespace EasyPipeline.Cache;
 
 public static class CacheRepository
 {

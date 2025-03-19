@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
-namespace EasyPipeline.Samples.Behaviors;
+namespace EasyPipeline.Logging;
 
 public class LoggingBehavior<TContract>(ILogger<LoggingBehavior<TContract>> logger) : IEasyPipeline<TContract> where TContract : class
 {

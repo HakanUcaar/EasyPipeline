@@ -1,7 +1,4 @@
-﻿using EasyPipeline.Samples.Contracts;
-using EasyPipeline.Samples.Repositories;
-
-namespace EasyPipeline.Samples.UseCases;
+﻿namespace EasyPipeline.Cache;
 
 public record GetCustomerByIdQuery(int Id);
 

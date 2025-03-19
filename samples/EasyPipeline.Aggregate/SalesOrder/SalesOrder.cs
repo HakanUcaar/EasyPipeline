@@ -1,4 +1,4 @@
-﻿namespace EasyPipeline.Samples.Contracts;
+﻿namespace EasyPipeline.Aggregate;
 
 public record SalesOrder(string CustemerNo, string CustomerName, string Address, List<SalesOrderItem> Items)
 {

@@ -1,8 +1,7 @@
 ﻿using EasyPipeline.Abstractions;
-using EasyPipeline.Samples.Contracts;
 using Microsoft.Extensions.Logging;
 
-namespace EasyPipeline.Samples.Behaviors;
+namespace EasyPipeline.Validate;
 
 public class CustomerValidationBehavior<TContract>(ILogger<CustomerValidationBehavior<TContract>> logger) : IEasyPipeline<TContract> where TContract : Customer
 {
