@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPipeline.Logging", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPipeline.Cache", "..\samples\EasyPipeline.Cache\EasyPipeline.Cache.csproj", "{DE68E955-6B53-45B5-BC19-0DC61EEF82F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPipeline.Notification", "..\samples\EasyPipeline.Notification\EasyPipeline.Notification.csproj", "{C7106E03-1B2B-4079-9991-76CD9C1C3879}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPipeline.Discount", "..\samples\EasyPipeline.Discount\EasyPipeline.Discount.csproj", "{BB105557-AF39-4AC4-B0DD-F84FF5D10F90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,14 @@ Global
 		{DE68E955-6B53-45B5-BC19-0DC61EEF82F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE68E955-6B53-45B5-BC19-0DC61EEF82F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE68E955-6B53-45B5-BC19-0DC61EEF82F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7106E03-1B2B-4079-9991-76CD9C1C3879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7106E03-1B2B-4079-9991-76CD9C1C3879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7106E03-1B2B-4079-9991-76CD9C1C3879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7106E03-1B2B-4079-9991-76CD9C1C3879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB105557-AF39-4AC4-B0DD-F84FF5D10F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB105557-AF39-4AC4-B0DD-F84FF5D10F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB105557-AF39-4AC4-B0DD-F84FF5D10F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB105557-AF39-4AC4-B0DD-F84FF5D10F90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +62,7 @@ Global
 		{9CAEE6E1-4274-4789-ABEC-5E263B0F611B} = {260C3C6E-6021-457F-8031-01FCF6018E7F}
 		{38041217-65D4-4857-ABB9-FC7EF68F0FA0} = {260C3C6E-6021-457F-8031-01FCF6018E7F}
 		{DE68E955-6B53-45B5-BC19-0DC61EEF82F5} = {260C3C6E-6021-457F-8031-01FCF6018E7F}
+		{C7106E03-1B2B-4079-9991-76CD9C1C3879} = {260C3C6E-6021-457F-8031-01FCF6018E7F}
+		{BB105557-AF39-4AC4-B0DD-F84FF5D10F90} = {260C3C6E-6021-457F-8031-01FCF6018E7F}
 	EndGlobalSection
 EndGlobal

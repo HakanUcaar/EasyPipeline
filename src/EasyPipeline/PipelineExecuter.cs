@@ -43,14 +43,14 @@ namespace EasyPipeline
         }
     }
 
-    public class PipelineExecuter<TIn, TOut>(IServiceProvider serviceProvider) where TIn : class where TOut : class
+    public class PipelineExecuter<TIn, TOut>(IServiceProvider serviceProvider)
     {
-        public async Task<TOut> Run(TIn context, CancellationToken cancellationToken = default)
+        public async Task<TOut?> Run(TIn context, CancellationToken cancellationToken = default)
         {
-            return await Run(context, (context) => { return null; }, cancellationToken);
+            return await Run(context, (context) => default(TOut), cancellationToken);
         }
 
-        public async Task<TOut> Run(TIn context, Func<TIn, TOut> action, CancellationToken cancellationToken = default)
+        public async Task<TOut?> Run(TIn context, Func<TIn, TOut> action, CancellationToken cancellationToken = default)
         {
             var finalProcess = new EasyPipelineDelegate<TIn, TOut>((context, cancellationToken) =>
             {
@@ -58,7 +58,7 @@ namespace EasyPipeline
             });
 
             var pipeline = serviceProvider
-                .GetServices<IEasyPipeline<TIn,TOut>>()
+                .GetServices<IEasyPipeline<TIn, TOut>>()
                 .Reverse()
                 .Aggregate(
                     finalProcess,
