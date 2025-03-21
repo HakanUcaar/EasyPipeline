@@ -14,10 +14,10 @@ public record Customer(string Name, string LastName, string Tel, string Country)
 Behavior oluşturma :
 
 ``` csharp
-public class CustomerValidationBehavior<TContract>(ILogger<CustomerValidationBehavior<TContract>> logger)
-        : IEasyPipeline<TContract> where TContract : Customer
+public class CustomerValidationBehavior<Customer>(ILogger<CustomerValidationBehavior<Customer>> logger)
+        : IEasyPipeline<Customer> 
 {
-    public async Task InvokeAsync(TContract context, EasyPipelineDelegate<TContract> next, CancellationToken cancellationToken)
+    public async Task InvokeAsync(Customer context, EasyPipelineDelegate<Customer> next, CancellationToken cancellationToken)
     {
         if(context == null || string.IsNullOrEmpty(context.Tel))
         {
@@ -96,10 +96,10 @@ public record SalesOrderItem(string ItemName, double Quantity, decimal UnitPrice
 Behavior oluşturma :
 
 ``` csharp
-public class SalesOrderGrossTotalAggregateBehavior<TContract>(ILogger<SalesOrderGrossTotalAggregateBehavior<TContract>> logger)
-        : IEasyPipeline<TContract> where TContract : SalesOrder
+public class SalesOrderGrossTotalAggregateBehavior<SalesOrder>(ILogger<SalesOrderGrossTotalAggregateBehavior<SalesOrder>> logger)
+        : IEasyPipeline<SalesOrder> 
 {
-    public async Task InvokeAsync(TContract context, EasyPipelineDelegate<TContract> next, CancellationToken cancellationToken)
+    public async Task InvokeAsync(SalesOrder context, EasyPipelineDelegate<SalesOrder> next, CancellationToken cancellationToken)
     {
 
         context.GrossTotal = context.Items.Sum(x => (decimal)x.Quantity * x.UnitPrice);
